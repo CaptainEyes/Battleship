@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int pair()
+{
+}
+
+int main()
+{
+
+    int nombre_x = 0;
+    int nombre_y = 0;
+    int i = 0;
+    int c = 11;
+
+
+    srand(time(NULL));                  // initialisation de rand
+
+    for(i=0; i<10; i++)                 // pour tester plusieur coordonées ( à supprimer dans programme final)
+    {
+        nombre_x = rand()%c;
+        while (nombre_x == 0)           //empeche d'avoir un zero
+        {
+            nombre_x = rand()%c;
+        }
+
+        nombre_y = rand()%c;
+
+        while (nombre_y == 0)            //empeche d'avoir un zero
+        {
+            nombre_y = rand()%c;
+        }
+
+        printf("Tir en (%d:%d) \n ",nombre_x,nombre_y);
+
+    }
+
+}
