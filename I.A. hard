@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+    int nombre_x = 0;
+    int nombre_y = 0;
+
+int TirRandom()
+{
+
+    int c = 11;
+
+    srand(time(NULL));                  // initialisation de rand
+
+
+        nombre_x = rand()%c;
+        while (nombre_x == 0)           //empeche d'avoir un zero
+        {
+            nombre_x = rand()%c;
+        }
+
+        nombre_y = rand()%c;
+
+        while (nombre_y == 0)            //empeche d'avoir un zero
+        {
+            nombre_y = rand()%c;
+        }
+
+        printf("Tir en (%d:%d) \n ",nombre_x,nombre_y);
+}
+
+int main()
+{
+    while(1)
+    {
+        int touche;
+        int nombre_y1;
+        int nombre_x1;
+        TirRandom();
+        printf("Touché? (1 ou 0) \n");                          //pour
+        scanf("%d",&touche);                                    //tester
+        while(touche==1)
+            {
+
+
+                nombre_y1 = nombre_y+1;
+
+                if(nombre_y>10)
+                {
+                    nombre_y1= nombre_y - 2;
+                }
+
+                printf("Tir en (%d:%d) \n ",nombre_x,nombre_y1);
+                printf("Touché? (1 ou 0) \n");                      //pour
+                scanf("%d",&touche);                                //tester
+
+               if(nombre_x>10)
+                {
+                    nombre_x1= nombre_x - 2;
+                }
+                printf("Tir en (%d:%d) \n ",nombre_x1,nombre_y);
+                printf("Touché? (1 ou 0) \n");                      //pour
+                scanf("%d",&touche);                                //tester
+                }
+    }
+}
+
+
