@@ -6,10 +6,12 @@ int main()
 
 char lettre;
 int chiffre;
-printf("entrez la lettre en majuscule : \n");
-scanf("%c ", &lettre);
-chiffre = lettre - 64;
+printf("entrez la lettre en minuscule : \n");
+scanf("%c", &lettre);
+chiffre = lettre - 96;
 printf("Le chiffre prit par la matrice serat: %d \n",chiffre);
 
 }
+
+
 
