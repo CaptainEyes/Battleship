@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-    int nombre_x = 0;
-    int nombre_y = 0;
-
-int TirRandom()
+    int nombre_x1 = 0;
+    int nombre_y1 = 0;
+    int touche;
+void TirRandom()
 {
 
     int c = 11;
@@ -13,92 +13,147 @@ int TirRandom()
     srand(time(NULL));                  // initialisation de rand
 
 
-        nombre_x = rand()%c;
-        while (nombre_x == 0)           //empeche d'avoir un zero
+        nombre_x1 = rand()%c;
+        while (nombre_x1 == 0)           //empeche d'avoir un zero
         {
-            nombre_x = rand()%c;
+            nombre_x1 = rand()%c;
         }
 
-        nombre_y = rand()%c;
+        nombre_y1 = rand()%c;
 
-        while (nombre_y == 0)            //empeche d'avoir un zero
+        while (nombre_y1 == 0)            //empeche d'avoir un zero
         {
-            nombre_y = rand()%c;
+            nombre_y1 = rand()%c;
         }
 
-        printf("Tir en (%d:%d) \n ",nombre_x,nombre_y);
+        printf("Tir en (%d:%d) \n ",nombre_x1,nombre_y1);
 }
 
+void TirDroite()
+{
+    nombre_x1 = nombre_x1 + 1;
+    printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
+    printf("Touché? (1 ou 0) \n");
+}
+
+void TirContinueDroite()
+{
+    nombre_x1 = nombre_x1 + 1;
+    printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
+    printf("Touché? (1 ou 0) \n");
+}
+
+void TirBas()
+{
+       nombre_x1 = nombre_x1 - 1;
+       nombre_y1 = nombre_y1 + 1;
+       printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
+       printf("Touché? (1 ou 0) \n");
+}
+
+void TirContinueBas()
+{
+       nombre_y1 = nombre_y1 + 1;
+       printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
+       printf("Touché? (1 ou 0) \n");
+}
+
+void TirGauche()
+{
+        nombre_y1 = nombre_y1 - 1;
+        nombre_x1 = nombre_x1 - 1;
+        printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
+        printf("Touché? (1 ou 0) \n");
+}
+
+void TirContinueGauche()
+{
+        nombre_x1 = nombre_x1 - 1;
+        printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
+        printf("Touché? (1 ou 0) \n");
+}
+
+void TirHaut()
+{
+        nombre_x1 = nombre_x1 + 1;
+        nombre_y1 = nombre_y1 - 1;
+        printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
+        printf("Touché? (1 ou 0) \n");
+}
+void TirContinueHaut()
+{
+        nombre_y1 = nombre_y1 - 1;
+        printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
+}
 int main()
 {
-
+        int x = 0;
         int touche;
-        int nombre_y1;
-        int nombre_x1;
         TirRandom();
-        nombre_x1 = nombre_x;
-        nombre_y1 = nombre_y;
         printf("Touché? (1 ou 0) \n");
         scanf("%d",&touche);
         if(touche==1)       //tir à droite
         {
-            nombre_y1 = nombre_x1 + 1;
-            printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
-            printf("Touché? (1 ou 0) \n");
+            x = x + 1;
+            TirDroite();
             scanf("%d",&touche);
         }
 
-
-            if(touche==0)       //tir en bas
+        if(touche==0)       //tir en bas
+        {
+           x = x + 1;
+           TirBas();
+           scanf("%d",&touche);
+        }
+        else
+        {
+            while(touche==1)            //tir continue à droite
             {
-               nombre_x1 = nombre_x1 - 1;
-               nombre_y1 = nombre_y1 + 1;
-               printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
-               printf("Touché? (1 ou 0) \n");
-               scanf("%d",&touche);
+                TirContinueDroite();
+                scanf("%d",&touche);
             }
-            else
+        }
+
+        if(touche ==0)               //tir à gauche
+        {
+            x = x + 1;
+            TirGauche();
+            scanf("%d",&touche);
+        }
+        else
+        {
+            while(touche==1)            // tir continue en bas
             {
-                while(touche==1)            //tir continue à droite
-                {
-                    nombre_y1 = nombre_x1 + 1;
-                    printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
-                    printf("Touché? (1 ou 0) \n");
-                    scanf("%d",&touche);
-                }
+                TirContinueBas();
+                scanf("%d",&touche);
+            }
+        }
+
+        if (touche==0)          //tir en haut
+        {
+                x = x + 1;
+                TirHaut();
+                scanf("%d",&touche);
+        }
+
+        else
+        {
+            while(touche==1)        //tir continue à gauche
+            {
+                TirContinueGauche();
+                scanf("%d",&touche);
             }
 
-                if(touche ==0)               //tir à gauche
-                {
-                    nombre_y1 = nombre_y1 - 1;
-                    nombre_x1 = nombre_x1 - 1;
-                    printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
-                    printf("Touché? (1 ou 0) \n");
-                    scanf("%d",&touche);
-                }
-                 else
-                    {
-                    while(touche==1)            // tir continue en bas
-                    {
-                        nombre_y1 = nombre_y1 + 1;
-                        printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
-                        printf("Touché? (1 ou 0) \n");
-                        scanf("%d",&touche);
-                    }
-                    }
-
-
-                    if (touche==0)
-                    {
-                        nombre_x1 = nombre_x1 + 1;              //tir en haut
-                        nombre_y1 = nombre_y1 - 1;
-                        printf("Tir en (%d:%d)\n",nombre_x1,nombre_y1);
-                    }
-
-
-
-
-
+        }
+        if (x==4)
+        {
+            touche = 1;
+            while(touche==1)                //tir continue en haut
+            {
+                TirContinueHaut();
+                scanf("%d",&touche);
+            }
+        }
 }
 
 
